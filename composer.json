@@ -1,0 +1,22 @@
+{
+    "name": "y9520/asrt",
+    "description": "A speech-to-text packet",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Y9520\\Asrt\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "y95201",
+            "email": "957612196@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "7.8.x-dev",
+        "pimple/pimple": "dev-main"
+    }
+}
