@@ -3,10 +3,12 @@
  * @Description: 
  * @Author: Y95201
  * @Date: 2023-09-10 20:36:49
- * @LastEditors: Y95201
- * @LastEditTime: 2023-09-10 22:17:17
+ * @LastEditors: y95201 957612196@qq.com
+ * @LastEditTime: 2023-10-27 17:13:39
  */
+namespace Y9520\Asrt\Gateways;
 use Y9520\Asrt\Support\Config;
+
 abstract class Gateway
 {
     protected $config;
@@ -24,9 +26,20 @@ abstract class Gateway
 
         return $this;
     }
-    public function getName()
-    {
-        return \strtolower(str_replace([__NAMESPACE__.'\\', 'Gateway'], '', \get_class($this)));
-    }
-    
+    public function post($url,$header,$audio){
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $audio);
+		$result = curl_exec($ch);
+		curl_close($ch);
+		
+		return $result;
+		
+	}
 }
